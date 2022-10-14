@@ -1,21 +1,60 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://images/backgrounds/background-day-loop.png" type="Texture" id=1]
-[ext_resource path="res://scripts/main.vs" type="Script" id=2]
+[ext_resource path="res://scripts/inGame.gd" type="Script" id=2]
 [ext_resource path="res://images/birds/yellow/yellowbird-midflap.png" type="Texture" id=3]
+[ext_resource path="res://scripts/bird.gd" type="Script" id=4]
+[ext_resource path="res://scenes/animations/birdFlap.tres" type="Animation" id=5]
+[ext_resource path="res://images/backgrounds/base.png" type="Texture" id=6]
+[ext_resource path="res://images/pipes/pipes.png" type="Texture" id=7]
+[ext_resource path="res://scripts/pipes.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17.5385, 12.6923 )
 
 [node name="main" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="background" type="Sprite" parent="."]
-position = Vector2( 200, 400 )
-scale = Vector2( 1.61632, 1.61632 )
+position = Vector2( 600, 400 )
+scale = Vector2( 1.617, 1.617 )
 texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 800, 500 )
+
+[node name="ground" type="Sprite" parent="."]
+position = Vector2( 601, 753 )
+scale = Vector2( 1.9625, 1.9625 )
+z_index = 1
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 650, 100 )
 
 [node name="bird" type="Sprite" parent="."]
-position = Vector2( 200, 400 )
-scale = Vector2( 2.16667, 2.16667 )
+position = Vector2( 600, 400 )
+scale = Vector2( 1.45834, 1.45834 )
 texture = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="bird"]
 current = true
+
+[node name="birdFlap" type="AnimationPlayer" parent="bird"]
+anims/birdFlap = ExtResource( 5 )
+
+[node name="CollisionDetector" type="Area2D" parent="bird"]
+
+[node name="Shape" type="CollisionShape2D" parent="bird/CollisionDetector"]
+position = Vector2( 0, -0.230743 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+
+[node name="pipes" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="pipe 1" type="Sprite" parent="pipes"]
+position = Vector2( 1300, 350 )
+scale = Vector2( 1.32933, 1.32933 )
+texture = ExtResource( 7 )
+
+[connection signal="area_entered" from="bird/CollisionDetector" to="bird" method="_on_touchPipe"]

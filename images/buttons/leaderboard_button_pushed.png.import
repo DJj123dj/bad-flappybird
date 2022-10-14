@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gameover.png-94ac5c8235c44824ab90c00f0b58282a.stex"
+path="res://.import/leaderboard_button_pushed.png-ea9867fa4bd17abc78695956467e2357.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/gameover.png"
-dest_files=[ "res://.import/gameover.png-94ac5c8235c44824ab90c00f0b58282a.stex" ]
+source_file="res://images/buttons/leaderboard_button_pushed.png"
+dest_files=[ "res://.import/leaderboard_button_pushed.png-ea9867fa4bd17abc78695956467e2357.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
