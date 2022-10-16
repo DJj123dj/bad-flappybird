@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/animations/transitionRESET.tres" type="Animation" id=1]
+[ext_resource path="res://scripts/switchScene.gd" type="Script" id=2]
+[ext_resource path="res://scenes/animations/scenesfadeOut.tres" type="Animation" id=3]
+[ext_resource path="res://scenes/animations/scenesfadeIn.tres" type="Animation" id=4]
+
+[node name="TransitionScene" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+anims/RESET = ExtResource( 1 )
+anims/fadeIn = ExtResource( 4 )
+anims/fadeOut = ExtResource( 3 )
+
+[connection signal="animation_finished" from="ColorRect/AnimationPlayer" to="." method="_on_finished"]

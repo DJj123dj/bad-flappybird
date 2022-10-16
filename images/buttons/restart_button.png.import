@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gameover.png-7d1c3784afc9968335855b39872e18a4.stex"
+path="res://.import/restart_button.png-d208d10b71ca12dfd0d08675f138e839.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/text/gameover.png"
-dest_files=[ "res://.import/gameover.png-7d1c3784afc9968335855b39872e18a4.stex" ]
+source_file="res://images/buttons/restart_button.png"
+dest_files=[ "res://.import/restart_button.png-d208d10b71ca12dfd0d08675f138e839.stex" ]
 
 [params]
 

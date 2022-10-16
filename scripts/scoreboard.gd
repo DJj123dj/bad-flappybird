@@ -12,6 +12,7 @@ func _on_touch(area):
 			print("points: "+String(points)) 
 
 func _ready():
+	var bird = get_node("/root/main/bird")
 	var digit1 = get_node("digit1")
 	var digit2 = get_node("digit2")
 	var defaultPath = "res://images/letters/"
@@ -39,7 +40,7 @@ func _ready():
 	var t0 = load(defaultPath+"0.png")
 	
 	#script
-	while true:
+	while bird.isGameRunning:
 		yield(get_tree().create_timer(0.1),"timeout")
 		var pointString = String(points)
 		
@@ -118,3 +119,9 @@ func _ready():
 				digit2.texture = t8
 			elif score1 == 9:
 				digit2.texture = t9
+	
+	var beforeScore = GameOverStorage.score
+	GameOverStorage.score = points
+	if beforeScore < points:
+		GameOverStorage.highScore = points
+		GameOverStorage.newHighScore = true

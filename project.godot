@@ -21,6 +21,11 @@ boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 config/windows_native_icon="res://favicon.ico"
 
+[autoload]
+
+GameOverStorage="*res://scenes/GameOverStorage.tscn"
+TransitionScene="*res://scenes/TransitionScene.tscn"
+
 [display]
 
 window/size/width=1200

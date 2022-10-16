@@ -21,3 +21,6 @@ func _ready():
 			background.region_rect.position = bgLocation
 			ground.region_rect.position = location
 		yield(get_tree().create_timer(0.01),"timeout")
+		
+	yield(get_tree().create_timer(1.8),"timeout")
+	TransitionScene.switchScene("GameOverPanel")
