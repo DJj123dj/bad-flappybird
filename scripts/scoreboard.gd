@@ -9,6 +9,7 @@ func _on_touch(area):
 	if name.begins_with("pointCheck"):
 		if bird.isGameRunning:
 			points = points + 1
+			$Point.play()
 			print("points: "+String(points)) 
 
 func _ready():

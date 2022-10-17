@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://images/backgrounds/background-day-loop.png" type="Texture" id=1]
 [ext_resource path="res://images/text/gameover.png" type="Texture" id=2]
@@ -8,7 +8,15 @@
 [ext_resource path="res://images/buttons/restart_button.png" type="Texture" id=6]
 [ext_resource path="res://images/backgrounds/gameover_board.png" type="Texture" id=7]
 [ext_resource path="res://scripts/scorePanel.gd" type="Script" id=8]
+[ext_resource path="res://images/medals/bronze.png" type="Texture" id=9]
 [ext_resource path="res://images/smallLetters/0.png" type="Texture" id=10]
+[ext_resource path="res://images/text/new_highscore.png" type="Texture" id=11]
+
+[sub_resource type="InputEventAction" id=8]
+action = "ui_space"
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "RESET"
@@ -55,6 +63,54 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("medal:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("medal:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("newHighscore:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("newHighscore:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.984694, 0.984694 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "showPanel"
@@ -70,6 +126,78 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "medal"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "bounce"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 6.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.984694, 0.984694 ), Vector2( 1.1, 1.1 ), Vector2( 0.984694, 0.984694 ), Vector2( 1.1, 1.1 ), Vector2( 1.2, 1.2 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "fadeIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 0.984694, 0.984694 ) ]
 }
 
 [node name="GameOverPanel" type="Node2D"]
@@ -120,6 +248,8 @@ margin_right = 500.0
 margin_bottom = 150.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
+shortcut_in_tooltip = false
+shortcut = SubResource( 9 )
 texture_normal = ExtResource( 6 )
 expand = true
 stretch_mode = 5
@@ -168,6 +298,24 @@ centered = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="scorePanel"]
 anims/RESET = SubResource( 3 )
 anims/showPanel = SubResource( 4 )
+
+[node name="medal" type="Sprite" parent="scorePanel"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -32.5714, 3.71429 )
+texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="scorePanel/medal"]
+anims/medal = SubResource( 5 )
+
+[node name="newHighscore" type="Sprite" parent="scorePanel"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 16.8571, 4.28571 )
+scale = Vector2( 0.984694, 0.984694 )
+texture = ExtResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="scorePanel/newHighscore"]
+anims/bounce = SubResource( 7 )
+anims/fadeIn = SubResource( 6 )
 
 [connection signal="pressed" from="buttonContainer/menuButton" to="." method="_on_menuButton_pressed"]
 [connection signal="pressed" from="buttonContainer/restartButton" to="." method="_on_restartButton_pressed"]

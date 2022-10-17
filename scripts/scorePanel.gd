@@ -18,9 +18,52 @@ func _ready():
 	var score = GameOverStorage.score
 	var highScore = GameOverStorage.highScore
 	
-	scoreCounter(score)
-	highscoreCounter(highScore)
-
+	scoreCounter(0)
+	highscoreCounter(0)
+	
+	yield(get_tree().create_timer(2),"timeout")
+	
+	var currentHighscore = 0
+	var currentScore = 0
+	#add score
+	var countSpeed = 0.02
+	while currentHighscore < highScore:
+		currentHighscore = currentHighscore+1
+		if currentScore < score:
+			currentScore = currentScore+1
+		scoreCounter(currentScore)
+		highscoreCounter(currentHighscore)
+		yield(get_tree().create_timer(countSpeed),"timeout")
+		countSpeed = countSpeed + 0.005
+		
+		
+	#NEW HIGHSCORE
+	if GameOverStorage.newHighScore:
+		GameOverStorage.newHighScore = false
+		$newHighscore/AnimationPlayer.play("fadeIn")
+		yield(get_tree().create_timer(1),"timeout")
+		$newHighscore/AnimationPlayer.play("bounce")
+	
+	#MEDAL
+	if score >= 100:
+		var medalTexture = load("res://images/medals/platina.png")
+		$medal.texture = medalTexture
+	elif score >= 60:
+		var medalTexture = load("res://images/medals/gold.png")
+		$medal.texture = medalTexture
+	elif score >= 30:
+		var medalTexture = load("res://images/medals/silver.png")
+		$medal.texture = medalTexture
+	elif score >= 10:
+		var medalTexture = load("res://images/medals/bronze.png")
+		$medal.texture = medalTexture
+	else:
+		var medalTexture = load("res://images/medals/bronze.png")
+		$medal.texture = medalTexture
+		
+	if score >= 10:
+		$medal/AnimationPlayer.play("medal")
+	
 func scoreCounter(points: float):
 	var digit1 = get_node("scoreCounter/digit1")
 	var digit2 = get_node("scoreCounter/digit2")

@@ -26,6 +26,10 @@ config/windows_native_icon="res://favicon.ico"
 GameOverStorage="*res://scenes/GameOverStorage.tscn"
 TransitionScene="*res://scenes/TransitionScene.tscn"
 
+[debug]
+
+gdscript/warnings/unsafe_call_argument=true
+
 [display]
 
 window/size/width=1200

@@ -6,6 +6,8 @@ var startPos = Vector2(600,400)
 var verticalSpeed = 0
 onready var bird = get_node(".")
 
+var wingSoundReady = true
+
 func _ready():
 	get_node("birdFlap").play("birdFlap")
 	bird.position = startPos
@@ -35,8 +37,13 @@ func _startGame():
 			#physics math
 			if (Input.is_action_pressed("ui_space",true)):
 				verticalSpeed = (abs(verticalSpeed)/4)+3
+				if wingSoundReady and GameOverStorage.soundEnabled:
+					$WingSound.play()
+					wingSoundReady = false
+				
 			else:
 				verticalSpeed = verticalSpeed - 0.20
+				wingSoundReady = true
 			
 			#debug + yield inf. loop
 			yield(get_tree().create_timer(0.01),"timeout")
@@ -54,6 +61,9 @@ func _on_touch(area):
 	if (areaName.begins_with("ground") or areaName.begins_with("pipe")):
 		isGameRunning = false
 		
+		if (not $HitSound.playing) and GameOverStorage.soundEnabled:
+			$HitSound.play()
+		
 		var fallSpeed = 0
 		var bonkSpeed = 6
 		
@@ -66,5 +76,8 @@ func _on_touch(area):
 				bonkSpeed = bonkSpeed - 0.2
 				
 			yield(get_tree().create_timer(0.01),"timeout")
+		
+		if (not $DieSound.playing) and GameOverStorage.soundEnabled:
+			$DieSound.play()
 		
 		bird.position.y = 637
