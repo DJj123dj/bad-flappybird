@@ -1,19 +1,19 @@
-extends Sprite
+extends Sprite2D
 
 var defaultPath = "res://images/smallLetters/"
-onready var t1 = load(defaultPath+"1.png")
-onready var t2 = load(defaultPath+"2.png")
-onready var t3 = load(defaultPath+"3.png")
-onready var t4 = load(defaultPath+"4.png")
-onready var t5 = load(defaultPath+"5.png")
-onready var t6 = load(defaultPath+"6.png")
-onready var t7 = load(defaultPath+"7.png")
-onready var t8 = load(defaultPath+"8.png")
-onready var t9 = load(defaultPath+"9.png")
-onready var t0 = load(defaultPath+"0.png")
+@onready var t1 = load(defaultPath+"1.png")
+@onready var t2 = load(defaultPath+"2.png")
+@onready var t3 = load(defaultPath+"3.png")
+@onready var t4 = load(defaultPath+"4.png")
+@onready var t5 = load(defaultPath+"5.png")
+@onready var t6 = load(defaultPath+"6.png")
+@onready var t7 = load(defaultPath+"7.png")
+@onready var t8 = load(defaultPath+"8.png")
+@onready var t9 = load(defaultPath+"9.png")
+@onready var t0 = load(defaultPath+"0.png")
 
 func _ready():
-	yield(get_tree().create_timer(1),"timeout")
+	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("showPanel")
 	var score = GameOverStorage.score
 	var highScore = GameOverStorage.highScore
@@ -21,7 +21,7 @@ func _ready():
 	scoreCounter(0)
 	highscoreCounter(0)
 	
-	yield(get_tree().create_timer(2),"timeout")
+	await get_tree().create_timer(2).timeout
 	
 	var currentHighscore = 0
 	var currentScore = 0
@@ -33,7 +33,7 @@ func _ready():
 			currentScore = currentScore+1
 		scoreCounter(currentScore)
 		highscoreCounter(currentHighscore)
-		yield(get_tree().create_timer(countSpeed),"timeout")
+		await get_tree().create_timer(countSpeed).timeout
 		countSpeed = countSpeed + 0.005
 		
 		
@@ -41,7 +41,7 @@ func _ready():
 	if GameOverStorage.newHighScore:
 		GameOverStorage.newHighScore = false
 		$newHighscore/AnimationPlayer.play("fadeIn")
-		yield(get_tree().create_timer(1),"timeout")
+		await get_tree().create_timer(1).timeout
 		$newHighscore/AnimationPlayer.play("bounce")
 	
 	#MEDAL

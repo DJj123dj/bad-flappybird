@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/die.wav-4bf6e3f7ae3bd90d7bdb90a79e9fb179.sample"
+type="AudioStreamWAV"
+uid="uid://cgeksqh1agtx4"
+path="res://.godot/imported/die.wav-4bf6e3f7ae3bd90d7bdb90a79e9fb179.sample"
 
 [deps]
 
 source_file="res://sounds/die.wav"
-dest_files=[ "res://.import/die.wav-4bf6e3f7ae3bd90d7bdb90a79e9fb179.sample" ]
+dest_files=["res://.godot/imported/die.wav-4bf6e3f7ae3bd90d7bdb90a79e9fb179.sample"]
 
 [params]
 

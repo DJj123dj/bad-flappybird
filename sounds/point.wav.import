@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/point.wav-30a7d19e640daf7ad825a46ff75887ea.sample"
+type="AudioStreamWAV"
+uid="uid://lajikd4k3ma1"
+path="res://.godot/imported/point.wav-30a7d19e640daf7ad825a46ff75887ea.sample"
 
 [deps]
 
 source_file="res://sounds/point.wav"
-dest_files=[ "res://.import/point.wav-30a7d19e640daf7ad825a46ff75887ea.sample" ]
+dest_files=["res://.godot/imported/point.wav-30a7d19e640daf7ad825a46ff75887ea.sample"]
 
 [params]
 

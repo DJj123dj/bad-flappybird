@@ -1,10 +1,10 @@
-extends Sprite
+extends Sprite2D
 
-export var isGameRunning = true
+@export var isGameRunning = true
 
 var startPos = Vector2(600,400)
 var verticalSpeed = 0
-onready var bird = get_node(".")
+@onready var bird = get_node(".")
 
 var wingSoundReady = true
 
@@ -12,11 +12,11 @@ func _ready():
 	get_node("birdFlap").play("birdFlap")
 	bird.position = startPos
 	print(3)
-	yield(get_tree().create_timer(0.8),"timeout")
+	await get_tree().create_timer(0.8).timeout
 	print(2)
-	yield(get_tree().create_timer(0.8),"timeout")
+	await get_tree().create_timer(0.8).timeout
 	print(1)
-	yield(get_tree().create_timer(0.8),"timeout")
+	await get_tree().create_timer(0.8).timeout
 	print("GO!")
 	
 	_startGame() 
@@ -36,19 +36,19 @@ func _startGame():
 			
 			#physics math
 			if (Input.is_action_pressed("ui_space",true)):
-				verticalSpeed = (abs(verticalSpeed)/4)+3
+				verticalSpeed = (abs(verticalSpeed)/4)+5
 				if wingSoundReady and GameOverStorage.soundEnabled:
 					$WingSound.play()
 					wingSoundReady = false
 				
 			else:
-				verticalSpeed = verticalSpeed - 0.20
+				verticalSpeed = verticalSpeed - 0.35
 				wingSoundReady = true
 			
 			#debug + yield inf. loop
-			yield(get_tree().create_timer(0.01),"timeout")
+			await get_tree().create_timer(0.01).timeout
 		else:
-			yield(get_tree().create_timer(0.1),"timeout")
+			await get_tree().create_timer(0.1).timeout
 		
 	
 	bird.rotation_degrees = 0
@@ -75,7 +75,7 @@ func _on_touch(area):
 				bird.position.x = bird.position.x - bonkSpeed
 				bonkSpeed = bonkSpeed - 0.2
 				
-			yield(get_tree().create_timer(0.01),"timeout")
+			await get_tree().create_timer(0.01).timeout
 		
 		if (not $DieSound.playing) and GameOverStorage.soundEnabled:
 			$DieSound.play()

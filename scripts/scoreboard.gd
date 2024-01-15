@@ -1,7 +1,7 @@
 extends Control
 
 
-export var points = 0
+@export var points = 0
 
 func _on_touch(area):
 	var name = area.name
@@ -9,7 +9,8 @@ func _on_touch(area):
 	if name.begins_with("pointCheck"):
 		if bird.isGameRunning:
 			points = points + 1
-			$Point.play()
+			if GameOverStorage.soundEnabled:
+				$Point.play()
 			print("points: "+String(points)) 
 
 func _ready():
@@ -42,7 +43,7 @@ func _ready():
 	
 	#script
 	while bird.isGameRunning:
-		yield(get_tree().create_timer(0.1),"timeout")
+		await get_tree().create_timer(0.1).timeout
 		var pointString = String(points)
 		
 		if pointString.length() > 1:

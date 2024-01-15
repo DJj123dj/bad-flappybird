@@ -1,8 +1,9 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/bluebird-downflap.png-4f88dc3ca3aa53b0ca3f8204ec0361b5.stex"
+type="CompressedTexture2D"
+uid="uid://hsxw0s3hpdcl"
+path="res://.godot/imported/bluebird-downflap.png-4f88dc3ca3aa53b0ca3f8204ec0361b5.ctex"
 metadata={
 "vram_texture": false
 }
@@ -10,26 +11,24 @@ metadata={
 [deps]
 
 source_file="res://images/birds/blue/bluebird-downflap.png"
-dest_files=[ "res://.import/bluebird-downflap.png-4f88dc3ca3aa53b0ca3f8204ec0361b5.stex" ]
+dest_files=["res://.godot/imported/bluebird-downflap.png-4f88dc3ca3aa53b0ca3f8204ec0361b5.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_mode=0
-compress/bptc_ldr=0
+compress/hdr_compression=1
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
 process/normal_map_invert_y=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=0.001
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

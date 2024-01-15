@@ -1,11 +1,11 @@
 extends Node2D
 
-onready var pipe1 = get_node("pipe 1")
-onready var pipe2 = get_node("pipe 2")
-onready var pipe3 = get_node("pipe 3")
-onready var pipe4 = get_node("pipe 4")
-onready var pipe5 = get_node("pipe 5")
-onready var pipe6 = get_node("pipe 6")
+@onready var pipe1 = get_node("pipe 1")
+@onready var pipe2 = get_node("pipe 2")
+@onready var pipe3 = get_node("pipe 3")
+@onready var pipe4 = get_node("pipe 4")
+@onready var pipe5 = get_node("pipe 5")
+@onready var pipe6 = get_node("pipe 6")
 
 var resetPipeDistance = 200
 
@@ -80,4 +80,4 @@ func _ready():
 				locationPipe6.x = locationPipe6.x - 2.55
 			pipe6.position = locationPipe6
 			
-		yield(get_tree().create_timer(0.01),"timeout")
+		await get_tree().create_timer(0.01).timeout
